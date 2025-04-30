@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Recycling Manager</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- External stylesheets -->
+    <link rel="stylesheet" href="recyclingManager.css" />
+    <!-- Google Roboto font for modern, clean typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+
+  <!-- Body with onload event handler to initialize search/filter functionality -->
+  <body onload="searchSort()">
+    <!-- Main layout container - holds the entire application UI -->
+    <div id="main">
+      <!-- Left panel navigation - sidebar with app title and action buttons -->
+      <div class="leftPanelWrapper">
+        <!-- App title that also functions as a home button to show all materials -->
+        <h1 id="home" onclick="displayTable(materials)">♻ Recycling Manager</h1>
+        <!-- Decorative divider line between title and buttons -->
+        <hr id="divider" />
+        <!-- Container for action buttons - vertical layout -->
+        <div class="buttonWrapper">
+          <!-- Add Item button with plus icon - opens the new item form -->
+          <button id="addItem" onclick="JavascriptDisplayAddItem()">
+            <span id="big-plus">+ </span>Add New Item
+          </button>
+          <!-- Manage Tags button with tag icon - opens the tag management UI -->
+          <button id="manageTags" onclick="manageTags()">
+            <span id="tag-logo">🔖</span>Manage Tags
+          </button>
+        </div>
+      </div>
+
+      <!--------------------- Data table container ----------------------->
+      <!-- Main content area for displaying data and forms -->
+      <div id="main">
+        <!-- Search and filter form - updates results in real-time -->
+        <form id="filters" onkeyup="searchSort()">
+          <!-- Search input field for filtering materials by name -->
+          <input type="text" name="search" id="search" placeholder="Search.." />
+          <br />
+          <!-- Dropdown container for filtering by item tags - populated by JS -->
+          <div onchange="filterByDropdown()" id="dropdown"></div>
+        </form>
+        <!-- Display area for materials table, forms, and details views -->
+        <div id="display">Material details will be listed here.</div>
+        <!-- Container for modal dialogs like confirmations -->
+        <div id="modal"></div>
+      </div>
+    </div>
+
+    <script src="recyclingManager.js" async defer></script>
+  </body>
+</html>
